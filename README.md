@@ -18,7 +18,7 @@ Hulagway is a desktop app for compressing, converting, resizing, inspecting and 
 ![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20111932.png?raw=true)
 ![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20111943.png?raw=true)
 ![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20111957.png?raw=true)
-![image alt]()
+![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20112020.png?raw=true)
 ![image alt]()
 ![image alt]()
 ![image alt]()
