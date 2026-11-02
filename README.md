@@ -15,7 +15,7 @@
 
 Hulagway is a desktop app for compressing, converting, resizing, inspecting and comparing images. It is built for students, professionals and everyday users who want smaller files without losing quality, and it can process whole folders at once without freezing the window.
 
-![image alt]()
+![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20111932.png?raw=true)
 ![image alt]()
 ![image alt]()
 ![image alt]()
