@@ -19,6 +19,7 @@ SUPPORTED_INPUT = {".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tif", ".tiff"}
 COMPRESS_INPUT = {".jpg", ".jpeg", ".png", ".webp"}
 FORMAT_EXT = {"JPEG": ".jpg", "PNG": ".png", "WEBP": ".webp", "BMP": ".bmp", "TIFF": ".tiff"}
 FORMAT_LABEL = {"JPEG": "JPG", "PNG": "PNG", "WEBP": "WEBP", "BMP": "BMP", "TIFF": "TIFF"}
+SUPPORTED_FORMATS = frozenset(FORMAT_EXT) | {"MPO"}
 LABEL_FORMAT = {v: k for k, v in FORMAT_LABEL.items()}
 ALPHA_FORMATS = {"PNG", "WEBP", "TIFF"}
 MAX_DIMENSION = 20000
@@ -46,6 +47,20 @@ class ImageError(Exception):
 
 class ValidationError(ValueError):
     """Raised when user-supplied settings are invalid."""
+
+
+def _validate_supported_format(image: Image.Image, path: Path) -> str:
+    """Return the detected format or reject formats HULAGWAY cannot process."""
+    fmt = (image.format or "").upper()
+    if fmt == "MPO":
+        return "JPEG"
+    if fmt not in SUPPORTED_FORMATS:
+        detected = fmt or "unknown"
+        supported = ", ".join(FORMAT_LABEL.values())
+        raise ImageError(
+            f"Unsupported image format: {detected}. Supported formats: {supported}."
+        )
+    return fmt
 
 
 @dataclass
@@ -143,7 +158,7 @@ def load_image(path: Path | str) -> tuple[Image.Image, str, str]:
     note = ""
     try:
         with Image.open(p) as im:
-            fmt = (im.format or "").upper()
+            fmt = _validate_supported_format(im, p)
             if getattr(im, "n_frames", 1) > 1:
                 note = "Multi-frame image: only the first frame was processed."
             im.load()
@@ -154,8 +169,6 @@ def load_image(path: Path | str) -> tuple[Image.Image, str, str]:
         raise ImageError("Unsupported or corrupted image file.") from None
     except (OSError, SyntaxError, ValueError, EOFError) as exc:
         raise ImageError(f"Cannot read image ({exc}).") from None
-    if fmt == "MPO":
-        fmt = "JPEG"
     try:
         img = ImageOps.exif_transpose(img)
     except Exception:
@@ -168,7 +181,7 @@ def make_thumbnail(path: Path | str, box=(320, 320)) -> tuple[Image.Image, tuple
     p = Path(path)
     try:
         with Image.open(p) as im:
-            fmt = (im.format or "").upper()
+            fmt = _validate_supported_format(im, p)
             size = im.size
             if fmt in ("JPEG", "MPO"):
                 im.draft("RGB", (box[0] * 2, box[1] * 2))
@@ -186,7 +199,7 @@ def make_thumbnail(path: Path | str, box=(320, 320)) -> tuple[Image.Image, tuple
         pass
     thumb = normalize_mode(thumb)
     thumb.thumbnail(box, Image.Resampling.LANCZOS)
-    return thumb, size, "JPEG" if fmt == "MPO" else fmt
+    return thumb, size, fmt
 
 
 def compute_size(size: tuple, opts: ProcessOptions) -> tuple:
@@ -448,7 +461,7 @@ def inspect_image(path: Path | str) -> dict:
     try:
         with Image.open(p) as im:
             info = dict(im.info)
-            fmt, mode, size = im.format or "?", im.mode, im.size
+            fmt, mode, size = _validate_supported_format(im, p), im.mode, im.size
             desc = getattr(im, "format_description", "") or ""
             frames = getattr(im, "n_frames", 1)
             alpha = has_alpha(im)
