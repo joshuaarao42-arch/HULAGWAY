@@ -54,7 +54,7 @@ def _validate_supported_format(image: Image.Image, path: Path) -> str:
     fmt = (image.format or "").upper()
     if fmt == "MPO":
         return "JPEG"
-    if fmt not in FORMAT_EXT:
+    if fmt not in SUPPORTED_FORMATS:
         detected = fmt or "unknown"
         supported = ", ".join(FORMAT_LABEL.values())
         raise ImageError(
