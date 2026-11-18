@@ -201,6 +201,6 @@ University of Science and Technology of Southern Philippines
 
 <div align="center">
 
-Made with care for simpler, lighter images.
+Make your images smaller.
 
 </div>
