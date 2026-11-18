@@ -41,7 +41,24 @@ The web service currently accepts a maximum total upload size of 4 MB per reques
 
 ## Screenshots
 
-Use the three-image web screenshot template in [`../docs/screenshots/README.md`](../docs/screenshots/README.md). Save the Image Studio, Image Inspector, and Processing History captures in the repository's `docs/screenshots/` directory using the filenames listed there.
+Paste the direct image URLs into the three boxes below. Replace only `PASTE_IMAGE_LINK_HERE` in each image tag; the layout and captions are already set.
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <strong>Image Studio</strong><br>
+      <img src="PASTE_IMAGE_LINK_HERE" alt="Hulagway Image Studio" width="100%">
+    </td>
+    <td align="center" width="33%">
+      <strong>Image Inspector</strong><br>
+      <img src="PASTE_IMAGE_LINK_HERE" alt="Hulagway Image Inspector" width="100%">
+    </td>
+    <td align="center" width="33%">
+      <strong>Processing History</strong><br>
+      <img src="PASTE_IMAGE_LINK_HERE" alt="Hulagway Processing History" width="100%">
+    </td>
+  </tr>
+</table>
 
 ## Desktop edition
 
