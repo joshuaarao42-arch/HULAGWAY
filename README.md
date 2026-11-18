@@ -6,141 +6,201 @@
 
 **Image Optimization and Conversion Studio**
 
+*Gamayon ang imong mga hulagway.*
+
 ![Python](https://img.shields.io/badge/Python-3.9%2B-FFE18A?style=flat-square&logo=python&logoColor=4A3A12)
-![CustomTkinter](https://img.shields.io/badge/UI-CustomTkinter-FBE7A1?style=flat-square)
-![Pillow](https://img.shields.io/badge/Images-Pillow-FFEDA8?style=flat-square)
-![SQLite](https://img.shields.io/badge/History-SQLite-FFF6C1?style=flat-square)
+![CustomTkinter](https://img.shields.io/badge/Desktop-CustomTkinter-FBE7A1?style=flat-square)
+![Pillow](https://img.shields.io/badge/Image%20Processing-Pillow-FFEDA8?style=flat-square)
+![SQLite](https://img.shields.io/badge/Desktop%20History-SQLite-FFF6C1?style=flat-square)
+![Flask](https://img.shields.io/badge/Web-Flask-FFF6C1?style=flat-square)
+![Vercel](https://img.shields.io/badge/Deployment-Vercel-222222?style=flat-square&logo=vercel)
+
+[Desktop Edition](#desktop-edition) · [Web Edition](#web-edition) · [Screenshots](#screenshots) · [Installation](#installation)
 
 </div>
 
-Hulagway is a desktop app for compressing, converting, resizing, inspecting and comparing images. It is built for students, professionals and everyday users who want smaller files without losing quality, and it can process whole folders at once without freezing the window.
+Hulagway is an image optimization and conversion studio for students, professionals, and everyday users. It helps make image files smaller, convert them into different formats, resize them, inspect their properties, and compare quality before and after processing.
 
-## Web Edition
+The project has two editions: a full-featured **Python desktop application** and a separate **browser-based web application**. The web edition does not replace or remove the original desktop application.
 
-**Try Hulagway online:** [hulagway-joshy3.vercel.app](https://hulagway-joshy3.vercel.app)
+## Editions
 
-The repository also includes a responsive browser-based edition in `web/`. It keeps the desktop application intact while bringing the core image workflow to the web.
+### Desktop Edition
 
-- Username-based account registration and sign-in with securely hashed passwords
-- Image compression, format conversion, resizing, and optimization
-- Image inspector for dimensions, format, color mode, transparency, and available metadata
-- Private processing history for each account, backed by Neon PostgreSQL
-- Batch processing for up to 8 images in one request, with a 4 MB total upload limit
-- Mobile-friendly workspace with downloadable ZIP results
+The original desktop application is built with Python and CustomTkinter. It is designed for local image workflows, including folder-based batch processing and detailed image comparison.
 
-**Web stack:** Flask, Pillow, Neon PostgreSQL, and Vercel. The web deployment uses encrypted environment variables for database access and session signing; secrets are not stored in the repository.
+**Desktop capabilities**
+- Compress JPG, PNG, and WebP images with adjustable quality.
+- Convert between PNG, JPG, WebP, BMP, and TIFF.
+- Resize using dimensions, percentages, or presets.
+- Process multiple images and folders in one batch.
+- Compare before-and-after images, including a difference map and PSNR score.
+- Inspect image dimensions, format, colour mode, transparency, DPI, ICC profile, and EXIF metadata.
+- Keep a searchable local processing history in SQLite.
 
-![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20111932.png?raw=true)
-![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20111943.png?raw=true)
-![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20111957.png?raw=true)
-![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20112020.png?raw=true)
-![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20112030.png?raw=true)
-![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20112122.png?raw=true)
-![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20112146.png?raw=true)
-![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20112158.png?raw=true)
+### Web Edition
 
-## Features
+**Open the live app:** [hulagway-joshy3.vercel.app](https://hulagway-joshy3.vercel.app)
 
-| Module | What it does |
+The web edition lives in the `web/` directory and provides a responsive image workspace accessible from a browser.
+
+- Username-based registration and login.
+- Passwords stored as secure hashes.
+- Image compression, conversion, resizing, and optimization.
+- Image inspection for dimensions, format, colour mode, transparency, and available metadata.
+- Account-specific processing history stored in Neon PostgreSQL.
+- Batch processing for up to 8 images per request.
+- Downloadable ZIP results.
+- Responsive layout for desktop and mobile screens.
+
+**Web stack:** Flask, Pillow, Neon PostgreSQL, and Vercel.
+
+**Upload limit:** 4 MB total per request. The web service is configured with a maximum of 8 images per batch.
+
+> The web deployment requires the `DATABASE_URL` and `SECRET_KEY` environment variables to be configured in the hosting platform. Never commit database credentials or secret keys to Git.
+
+## Screenshots
+
+The screenshots below show the **desktop edition**. Web screenshots have their own six-image template in [`docs/screenshots/README.md`](docs/screenshots/README.md); add your captures there when ready.
+
+### Desktop application
+
+| Dashboard | Image compressor |
 |---|---|
-| **Dashboard** | Storage saved, average reduction, totals, quick actions, recent operations and per-tool activity |
-| **Image Compressor** | Compress JPG, PNG and WebP with an adjustable quality slider; shows original size, new size and percentage saved. Files that would not get smaller are skipped |
-| **Format Converter** | Convert between PNG, JPG, WebP, BMP and TIFF. Transparency is kept where the format supports it and flattened onto a background colour you choose where it does not |
-| **Image Resizer** | Resize by percentage, custom width and height, or presets (HD, Full HD, 4K, Instagram, X header and more), with aspect-ratio and "don't enlarge" options |
-| **Batch Processor** | Add files or entire folders (with subfolders), then compress, convert and resize in one pass on parallel workers, with live progress, cancel, per-file error handling and a final summary |
-| **Before & After** | Side-by-side view, 100% crop and an amplified difference map, with file sizes and a PSNR quality score. Generate a preview at any quality or compare two existing files |
-| **Image Inspector** | Dimensions, format, colour mode, bit depth, transparency, DPI, ICC profile and EXIF/GPS metadata, plus a one-click metadata-free copy |
-| **Processing History** | Every operation saved in SQLite; search, filter, compare, open the folder, delete entries or export to CSV |
+| ![Hulagway desktop dashboard](Hulagway%28Images%29/Screenshot%202026-11-02%20111932.png) | ![Hulagway image compressor](Hulagway%28Images%29/Screenshot%202026-11-02%20111943.png) |
 
-### Built to be safe
+| Format converter | Image resizer |
+|---|---|
+| ![Hulagway format converter](Hulagway%28Images%29/Screenshot%202026-11-02%20111957.png) | ![Hulagway image resizer](Hulagway%28Images%29/Screenshot%202026-11-02%20112020.png) |
 
-- **Originals are never overwritten.** Outputs go to a separate folder with a suffix such as `_compressed`; if a name already exists, `_1`, `_2`, … is added.
-- **Corrupted or unsupported files** are reported per file and never stop a batch.
-- **The interface never freezes:** all processing runs in background threads and reports back through a thread-safe queue.
-- **Settings are validated:** quality, dimensions and output paths are checked before anything runs.
+| Batch processor | Before and after comparison |
+|---|---|
+| ![Hulagway batch processor](Hulagway%28Images%29/Screenshot%202026-11-02%20112030.png) | ![Hulagway before and after comparison](Hulagway%28Images%29/Screenshot%202026-11-02%20112122.png) |
 
-## Getting started
+| Image inspector | Processing history |
+|---|---|
+| ![Hulagway image inspector](Hulagway%28Images%29/Screenshot%202026-11-02%20112146.png) | ![Hulagway processing history](Hulagway%28Images%29/Screenshot%202026-11-02%20112158.png) |
 
-### Requirements
+## Desktop features in detail
 
-- Python 3.9 or newer
-- On Linux, Tk: `sudo apt install python3-tk`
+| Module | Description |
+|---|---|
+| **Dashboard** | Storage saved, average reduction, totals, quick actions, recent operations, and per-tool activity. |
+| **Image Compressor** | Compress JPG, PNG, and WebP with adjustable quality. Displays original size, output size, and percentage saved. Files that would not become smaller are skipped. |
+| **Format Converter** | Convert PNG, JPG, WebP, BMP, and TIFF. Transparency is preserved where supported or flattened onto a selected background. |
+| **Image Resizer** | Resize by percentage, custom dimensions, or presets such as HD, Full HD, 4K, Instagram, and X header. Includes aspect-ratio and don't-enlarge options. |
+| **Batch Processor** | Process individual files or folders, including subfolders, with progress updates, cancellation, per-file error handling, and a final summary. |
+| **Before & After** | Side-by-side preview, 100% crop, difference map, file-size comparison, and PSNR quality score. |
+| **Image Inspector** | Inspect dimensions, format, colour mode, bit depth, transparency, DPI, ICC profile, and EXIF/GPS metadata. |
+| **Processing History** | Search, filter, compare, open output folders, delete entries, or export records to CSV. |
 
-### Installation
+## Safety and file handling
+
+- Original images are not overwritten. Processed files are saved separately with a descriptive suffix.
+- Existing output filenames are protected by adding a numeric suffix.
+- Unsupported or corrupted files are reported individually and do not stop an entire batch.
+- Desktop image processing runs in background workers to keep the interface responsive.
+- Metadata is retained by default in the desktop edition; users can choose to remove it, including GPS metadata.
+
+## Installation
+
+### Desktop edition requirements
+
+- Python 3.9 or newer.
+- Tk support on Linux (for example, `sudo apt install python3-tk`).
+
+### Run the desktop application
 
 ```bash
-git clone https://github.com/<your-username>/hulagway.git
-cd hulagway
+git clone https://github.com/joshuaarao42-arch/HULAGWAY.git
+cd HULAGWAY
 
-# optional but recommended
 python -m venv .venv
-# Windows:      .venv\Scripts\activate
-# macOS/Linux:  source .venv/bin/activate
+
+# Windows
+.venv\Scripts\activate
+
+# macOS / Linux
+source .venv/bin/activate
 
 pip install -r requirements.txt
 python main.py
 ```
 
-## Usage
+### Web edition
 
-1. Pick a tool from the sidebar (Compressor, Converter, Resizer or Batch).
-2. Click **Add images** (or **Add folder** in Batch) and select your files.
-3. Adjust the settings on the right and choose where to **save** the results.
-4. Press **Start**. Double-click any finished row to open it in **Before & After**.
+The web application source is in `web/`. See [`web/README.md`](web/README.md) for its configuration and deployment notes. The hosted version is available at [https://hulagway-joshy3.vercel.app](https://hulagway-joshy3.vercel.app).
 
-### Good to know
+## Desktop usage
 
-- **Quality** applies to JPG and WebP, and WebP at 100 is lossless. PNG is always lossless unless *Allow lossy PNG* is ticked, which reduces the palette (quality 1–99 maps to 16–256 colours).
-- **Metadata** (EXIF, colour profile) is kept by default. Tick *Remove metadata* to strip it, including GPS location.
-- **Animated images** are processed as their first frame only, and a note appears in the results.
-- The default output folder is `~/Pictures/Hulagway`. History and settings are stored in `~/.hulagway/history.db`.
+1. Launch Hulagway and choose a tool from the sidebar.
+2. Select images, or choose a folder in the Batch Processor.
+3. Adjust the processing settings and output destination.
+4. Start processing and review the results.
+5. Open the Before & After view to compare output quality when needed.
+
+### Desktop notes
+
+- Quality settings apply to JPG and WebP. WebP at quality 100 is lossless.
+- PNG is lossless by default. The optional lossy PNG mode reduces the colour palette.
+- Animated images are processed as their first frame only.
+- The default output folder is `~/Pictures/Hulagway`.
+- Desktop history and settings are stored in `~/.hulagway/history.db`.
 
 ## Project structure
 
-```
-hulagway/
-├── main.py                  # entry point
+```text
+HULAGWAY/
+├── main.py
 ├── requirements.txt
-├── assets/                  # logo.png, icon.ico and the script that draws them
-├── core/                    # image logic, no GUI imports
-│   ├── image_ops.py         # load, resize, convert, compress, inspect, compare
-│   ├── batch.py             # ThreadPoolExecutor batch engine with cancel and summary
-│   ├── database.py          # SQLite history and settings
-│   └── utils.py             # formatting and file helpers
-└── ui/                      # CustomTkinter interface
-    ├── app.py               # main window and sidebar navigation
-    ├── theme.py             # colour palette and styling
-    ├── widgets.py           # shared components (cards, tables, previews, controls)
-    ├── tool_page.py         # Compressor, Converter, Resizer and Batch
-    ├── compare_page.py
-    ├── inspector_page.py
-    ├── history_page.py
-    └── dashboard_page.py
+├── assets/
+│   ├── logo.png
+│   ├── icon.ico
+│   └── generate_logo.py
+├── core/                  # Desktop image-processing logic
+├── ui/                    # CustomTkinter interface
+├── web/                   # Separate Flask web edition
+├── docs/
+│   └── screenshots/       # Screenshot guide and web screenshot template
+└── Hulagway(Images)/      # Desktop application screenshots
 ```
 
-The `core` package has no GUI dependencies, so the image engine can be tested or reused on its own.
+The desktop `core/` package separates image-processing logic from the graphical interface, making the image engine easier to test and reuse.
 
-## Tech stack
+## Technology
 
-- **Python** with **CustomTkinter** for the interface
-- **Pillow** for all image processing
-- **SQLite** for processing history
-- **threading** and **concurrent.futures** for background and batch work
-- **pathlib** and **os** for file management
-
-## Design
-
-The interface follows the *Soft Yellow Daydream Hues* palette: Vanilla Tint `#FFF9E3`, Lemon Cream `#FFF6C1`, Butter Yellow `#FFEDA8`, Pale Honey `#FBE7A1` and Sunlight Glow `#FFE18A`, with dark brown text for readability. The logo is drawn in code: run `python assets/generate_logo.py` to regenerate `logo.png` and `icon.ico`.
+| Area | Technologies |
+|---|---|
+| Desktop interface | Python, CustomTkinter |
+| Image processing | Pillow |
+| Desktop history | SQLite |
+| Desktop background work | threading, concurrent.futures |
+| Web application | Flask, Pillow |
+| Web database | Neon PostgreSQL |
+| Web hosting | Vercel |
 
 ## Build a Windows executable
+
+From the repository root:
 
 ```bash
 pip install pyinstaller
 pyinstaller --noconsole --onefile --name Hulagway --icon assets/icon.ico --add-data "assets;assets" --collect-all customtkinter main.py
 ```
 
-The result is in `dist/Hulagway.exe`. On macOS and Linux, use `:` instead of `;` in `--add-data`.
+The executable will be created in `dist/Hulagway.exe`. On macOS and Linux, use `:` instead of `; ` in the `--add-data` argument.
 
 ## Author
 
-**Joshua Arao** — Computer Science student, University of Science and Technology of Southern Philippines
+**Joshua C. Arao**  
+Computer Science Student  
+University of Science and Technology of Southern Philippines  
+[GitHub](https://github.com/joshuaarao42-arch)
+
+---
+
+<div align="center">
+
+Made with care for simpler, lighter images.
+
+</div>
