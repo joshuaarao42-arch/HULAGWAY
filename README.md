@@ -15,6 +15,21 @@
 
 Hulagway is a desktop app for compressing, converting, resizing, inspecting and comparing images. It is built for students, professionals and everyday users who want smaller files without losing quality, and it can process whole folders at once without freezing the window.
 
+## Web Edition
+
+**Try Hulagway online:** [hulagway-joshy3.vercel.app](https://hulagway-joshy3.vercel.app)
+
+The repository also includes a responsive browser-based edition in `web/`. It keeps the desktop application intact while bringing the core image workflow to the web.
+
+- Username-based account registration and sign-in with securely hashed passwords
+- Image compression, format conversion, resizing, and optimization
+- Image inspector for dimensions, format, color mode, transparency, and available metadata
+- Private processing history for each account, backed by Neon PostgreSQL
+- Batch processing for up to 8 images in one request, with a 4 MB total upload limit
+- Mobile-friendly workspace with downloadable ZIP results
+
+**Web stack:** Flask, Pillow, Neon PostgreSQL, and Vercel. The web deployment uses encrypted environment variables for database access and session signing; secrets are not stored in the repository.
+
 ![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20111932.png?raw=true)
 ![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20111943.png?raw=true)
 ![image alt](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Hulagway(Images)/Screenshot%202026-11-02%20111957.png?raw=true)
