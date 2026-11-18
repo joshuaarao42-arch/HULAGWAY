@@ -259,25 +259,13 @@ def process():
             for name, payload in outputs:
                 zf.writestr(name, payload)
         archive.seek(0)
-        token = secrets.token_urlsafe(12)
-        session["download_token"] = token
-        session["download_data"] = __import__("base64").b64encode(archive.getvalue()).decode("ascii")
-        session["download_name"] = "hulagway-processed.zip"
-        return jsonify(ok=True, results=rows, download="/api/download?token="+token)
+        response = send_file(archive, mimetype="application/zip",
+                             as_attachment=True, download_name="hulagway-processed.zip")
+        response.headers["X-Hulagway-Results"] = __import__("json").dumps(rows, separators=(",", ":"))
+        response.headers["Access-Control-Expose-Headers"] = "X-Hulagway-Results"
+        return response
     except (ValueError, OSError) as exc:
         return json_error(str(exc))
-
-
-@app.get("/api/download")
-@login_required
-def download():
-    token = request.args.get("token", "")
-    if not token or not secrets.compare_digest(token, session.get("download_token", "")):
-        return json_error("This download has expired. Process your images again.", 404)
-    import base64
-    data = base64.b64decode(session.get("download_data", ""))
-    return send_file(io.BytesIO(data), mimetype="application/zip",
-                     as_attachment=True, download_name="hulagway-processed.zip")
 
 
 @app.get("/api/history")
