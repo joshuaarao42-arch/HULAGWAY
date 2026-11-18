@@ -6,7 +6,7 @@
 
 **Image Optimization and Conversion Studio**
 
-*Gamayon ang imong mga hulagway.*
+*Make your images smaller.*
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-FFE18A?style=flat-square&logo=python&logoColor=4A3A12)
 ![CustomTkinter](https://img.shields.io/badge/Desktop-CustomTkinter-FBE7A1?style=flat-square)
