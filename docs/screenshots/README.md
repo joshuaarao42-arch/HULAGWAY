@@ -1,38 +1,43 @@
-# Hulagway Screenshot Template
+# Hulagway Screenshot Links
 
-This folder contains the screenshot template for the Hulagway web application. Keep the gallery focused on its three main areas: **Image Studio**, **Image Inspector**, and **Processing History**.
+Use the three boxes below in the README to display the web application's screenshots.
 
-## Capture guidelines
+## How to add your screenshots
 
-- Capture the actual deployed application UI.
-- Use the same browser zoom level (100% recommended) and a consistent window size.
-- Use sample images that you own or are allowed to use.
-- Do not show passwords, tokens, private account details, or other personal information.
-- Save screenshots as PNG files at a readable resolution.
-- Do not add extra screenshots to this gallery; keep it to these three core application views.
+1. Upload each screenshot to GitHub (for example, into this folder) or use a direct image URL.
+2. Copy the image's direct URL.
+3. In the root README or `web/README.md`, find the matching screenshot box.
+4. Replace only the `PASTE_IMAGE_LINK_HERE` text inside that box's `img src` attribute with your URL.
 
-## Three-image screenshot template
+You only need to paste one link per box. Do not change the captions or the surrounding HTML.
 
-Save the three screenshots in this directory with these exact filenames:
+## Required screenshots
 
-| # | Filename | What to capture |
-|---|---|---|
-| 1 | `image-studio.png` | Main Image Studio workspace, including the image tools and upload area. |
-| 2 | `image-inspector.png` | Image Inspector displaying the details of a sample image. |
-| 3 | `processing-history.png` | Processing History showing sample completed image operations. |
+| Box | Screenshot to use |
+|---|---|
+| Image Studio | Main workspace, tools, and upload area |
+| Image Inspector | Inspector showing the details of a sample image |
+| Processing History | A list of completed image operations |
 
-## Markdown gallery template
+## Gallery template
 
-Add this block to the Web Edition section of the root README after the screenshots have been captured:
-
-```markdown
-### Web application
-
-| Image Studio | Image Inspector | Processing History |
-|---|---|---|
-| ![Hulagway Image Studio](docs/screenshots/image-studio.png) | ![Hulagway Image Inspector](docs/screenshots/image-inspector.png) | ![Hulagway Processing History](docs/screenshots/processing-history.png) |
+```html
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <strong>Image Studio</strong><br>
+      <img src="PASTE_IMAGE_LINK_HERE" alt="Hulagway Image Studio" width="100%">
+    </td>
+    <td align="center" width="33%">
+      <strong>Image Inspector</strong><br>
+      <img src="PASTE_IMAGE_LINK_HERE" alt="Hulagway Image Inspector" width="100%">
+    </td>
+    <td align="center" width="33%">
+      <strong>Processing History</strong><br>
+      <img src="PASTE_IMAGE_LINK_HERE" alt="Hulagway Processing History" width="100%">
+    </td>
+  </tr>
+</table>
 ```
 
-## Screenshot status
-
-The three image files are placeholders in this template only and are not included yet. Add the real screenshots after capturing the deployed web application. No fake or empty image assets are used.
+**Note:** The boxes are ready, but the actual screenshot links still need to be added. Use real screenshots of the deployed application; do not use mock images.
