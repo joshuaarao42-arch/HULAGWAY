@@ -71,7 +71,7 @@ The web edition has three screenshot slots below. To add your screenshots, repla
   <tr>
     <td align="center" width="33%">
       <strong>Image Studio</strong><br>
-      <img src="PASTE_IMAGE_LINK_HERE" alt="Hulagway Image Studio" width="100%">
+      <img src="https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Images/Screenshot%202026-11-18%20130001.png?raw=true" alt="Hulagway Image Studio" width="100%">
     </td>
     <td align="center" width="33%">
       <strong>Image Inspector</strong><br>
