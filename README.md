@@ -61,7 +61,28 @@ The web edition lives in the `web/` directory and provides a responsive image wo
 
 ## Screenshots
 
-The screenshots below show the **desktop edition**. The web edition uses a focused three-image screenshot template in [`docs/screenshots/README.md`](docs/screenshots/README.md): Image Studio, Image Inspector, and Processing History.
+The screenshots below show the **desktop edition**. The web edition has a simple three-box screenshot gallery where you only need to paste your image links.
+
+### Web application
+
+The web edition has three screenshot slots below. To add your screenshots, replace only each `PASTE_IMAGE_LINK_HERE` value with the direct image URL. You do not need to edit the captions or layout.
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <strong>Image Studio</strong><br>
+      <img src="PASTE_IMAGE_LINK_HERE" alt="Hulagway Image Studio" width="100%">
+    </td>
+    <td align="center" width="33%">
+      <strong>Image Inspector</strong><br>
+      <img src="PASTE_IMAGE_LINK_HERE" alt="Hulagway Image Inspector" width="100%">
+    </td>
+    <td align="center" width="33%">
+      <strong>Processing History</strong><br>
+      <img src="PASTE_IMAGE_LINK_HERE" alt="Hulagway Processing History" width="100%">
+    </td>
+  </tr>
+</table>
 
 ### Desktop application
 
