@@ -240,8 +240,6 @@ def process():
             if operation == "resize":
                 im.thumbnail((width, height), Image.Resampling.LANCZOS)
             payload, fmt = encode_image(im, output_format, quality, bg)
-            if operation in {"compress", "optimize"} and len(payload) >= len(raw) and fmt in {"JPEG", "WEBP"}:
-                payload, fmt = raw, (im.format or fmt)
             ext = {"JPEG":"jpg","PNG":"png","WEBP":"webp","BMP":"bmp","TIFF":"tiff"}[fmt]
             outname = f"{name.rsplit('.',1)[0]}_hulagway.{ext}"
             outputs.append((outname, payload))
@@ -281,7 +279,7 @@ def history():
     return jsonify(items=rows)
 
 
-@app.get("/api/inspect")
+@app.post("/api/inspect")
 @login_required
 def inspect():
     file = request.files.get("image")
