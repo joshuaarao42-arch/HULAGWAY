@@ -61,7 +61,7 @@ The web edition lives in the `web/` directory and provides a responsive image wo
 
 ## Screenshots
 
-The screenshots below show the **desktop edition**. Web screenshots have their own six-image template in [`docs/screenshots/README.md`](docs/screenshots/README.md); add your captures there when ready.
+The screenshots below show the **desktop edition**. The web edition uses a focused three-image screenshot template in [`docs/screenshots/README.md`](docs/screenshots/README.md): Image Studio, Image Inspector, and Processing History.
 
 ### Desktop application
 
