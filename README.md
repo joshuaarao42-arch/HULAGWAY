@@ -61,8 +61,6 @@ The web edition lives in the `web/` directory and provides a responsive image wo
 
 ## Screenshots
 
-The screenshots below show the **desktop edition**. The web edition has a simple three-box screenshot gallery where you only need to paste your image links.
-
 ### Web application
 <table>
   <tr>
