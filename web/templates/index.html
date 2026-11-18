@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff9e3"><title>Hulagway — Image Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div id="auth" class="auth-shell">
+  <div class="auth-card">
+    <div class="brand"><img src="https://raw.githubusercontent.com/joshuaarao42-arch/HULAGWAY/main/assets/logo.png" alt="Hulagway logo"><div><b>hulagway</b><small>Gamayón ang imong mga hulagway.</small></div></div>
+    <div class="auth-copy"><span class="eyebrow">IMAGE OPTIMIZATION STUDIO</span><h1>Make every pixel<br><em>work smarter.</em></h1><p>Compress, convert, resize and understand your images in one calm workspace.</p></div>
+    <div class="auth-form">
+      <div class="tabs"><button class="tab active" data-mode="login">Sign in</button><button class="tab" data-mode="signup">Create account</button></div>
+      <form id="auth-form"><label>Username</label><input id="username" name="username" minlength="3" maxlength="24" autocomplete="username" placeholder="Your username" required><label>Password</label><input id="password" name="password" type="password" minlength="10" autocomplete="current-password" placeholder="At least 10 characters" required><p class="hint" id="password-hint">Use your Hulagway username and password.</p><button class="primary full" type="submit" id="auth-submit">Sign in <span>→</span></button><p class="error" id="auth-error"></p></form>
+    </div><div class="auth-foot">PRIVATE WORKSPACE · YOUR FILES STAY YOURS</div>
+  </div><div class="auth-art"><div class="sun"></div><div class="art-copy"><span>01 / CREATE MORE WITH LESS</span><h2>Smaller files.<br>Clearer workflow.</h2><p>Tools for the images that make your work yours.</p></div><div class="floating-card"><div class="mini-image">✳</div><div><b>image-final.webp</b><small>Optimized · ready to go</small></div><strong>−68%</strong></div><div class="art-note">SOFT YELLOW DAYDREAM HUES</div></div>
+</div>
+<div id="app" class="app-shell hidden">
+  <aside class="sidebar"><div class="brand"><img src="https://raw.githubusercontent.com/joshuaarao42-arch/HULAGWAY/main/assets/logo.png" alt=""><div><b>hulagway</b><small>IMAGE STUDIO</small></div></div><div class="side-label">WORKSPACE</div><button class="nav active" data-page="studio"><span>✳</span> Image studio</button><button class="nav" data-page="inspector"><span>⌕</span> Image inspector</button><button class="nav" data-page="history"><span>◷</span> Processing history</button><div class="sidebar-bottom"><div class="user-chip"><div class="avatar" id="avatar">J</div><div><b id="side-username">User</b><small>Personal workspace</small></div></div><button id="logout" class="logout">Sign out ↗</button></div></aside>
+  <main class="main"><header class="topbar"><div><span class="eyebrow">YOUR CREATIVE WORKSPACE</span><h1 id="page-title">Image studio</h1></div><div class="top-user"><span class="online"></span><span id="top-username">Welcome</span></div></header>
+  <section id="studio-page" class="page">
+    <div class="intro"><div><h2>Good things come in<br><em>smaller packages.</em></h2><p>Optimize your images without losing sight of what matters.</p></div><div class="intro-stamp">H<br><small>IMG<br>LAB</small></div></div>
+    <div class="workspace-grid"><div class="panel editor-panel"><div class="panel-head"><div><span class="eyebrow">01 / SELECT TOOL</span><h3>What would you like to do?</h3></div><span class="step">01</span></div>
+      <div class="tool-options"><button class="tool-option selected" data-operation="compress"><span class="tool-icon">◒</span><b>Compress</b><small>Reduce file size</small></button><button class="tool-option" data-operation="convert"><span class="tool-icon">⇄</span><b>Convert</b><small>Change format</small></button><button class="tool-option" data-operation="resize"><span class="tool-icon">↗</span><b>Resize</b><small>Adjust dimensions</small></button><button class="tool-option" data-operation="optimize"><span class="tool-icon">✧</span><b>Optimize</b><small>Balanced output</small></button></div>
+      <div class="panel-head upload-head"><div><span class="eyebrow">02 / ADD YOUR IMAGES</span><h3>Drop images to begin</h3></div><span class="step">02</span></div>
+      <label class="dropzone" id="dropzone"><input id="files" type="file" accept="image/jpeg,image/png,image/webp,image/bmp,image/tiff" multiple hidden><span class="upload-symbol">↑</span><b>Drag and drop images here</b><small>or <u>browse files</u> · JPG, PNG, WebP, BMP, TIFF</small><small class="muted">Up to 8 images · 4 MB total per request</small></label>
+      <div id="file-list" class="file-list"></div>
+      <div class="settings"><div class="panel-head"><div><span class="eyebrow">03 / FINE-TUNE</span><h3>Output settings</h3></div><span class="step">03</span></div>
+        <div class="setting-row" id="quality-row"><div><label for="quality">Image quality</label><small>Higher quality keeps more detail</small></div><div class="range-wrap"><input id="quality" type="range" min="10" max="100" value="82"><b id="quality-value">82%</b></div></div>
+        <div class="setting-row"><div><label for="format">Output format</label><small>Choose your preferred file type</small></div><select id="format"><option>WEBP</option><option>JPG</option><option>PNG</option><option>BMP</option><option>TIFF</option></select></div>
+        <div class="setting-row resize-setting hidden"><div><label for="width">Target dimensions</label><small>Fit inside these pixel dimensions</small></div><div class="dimensions"><input id="width" type="number" min="1" max="20000" value="1280" aria-label="Width"><span>×</span><input id="height" type="number" min="1" max="20000" value="720" aria-label="Height"></div></div>
+      </div><button id="process" class="primary process-btn">Process images <span>→</span></button><p id="process-error" class="error"></p>
+    </div>
+    <div class="right-column"><div class="panel preview-panel"><div class="panel-head"><div><span class="eyebrow">LIVE WORKSPACE</span><h3>Your image queue</h3></div><span class="queue-count" id="queue-count">0 files</span></div><div id="preview-empty" class="preview-empty"><div class="empty-graphic"><span>✳</span><i></i></div><b>Your canvas is ready</b><p>Add an image to see it appear here.</p></div><div id="previews" class="previews"></div><div id="results" class="results hidden"></div></div>
+    <div class="tip-card"><span class="tip-icon">✦</span><div><b>A little tip</b><p>WebP often delivers smaller files than JPG or PNG at a similar visual quality.</p></div></div><div class="stats-card"><span class="eyebrow">MADE FOR YOUR WORKFLOW</span><div class="stats-row"><div><b>5</b><small>formats</small></div><div><b>8</b><small>files at once</small></div><div><b>∞</b><small>possibilities</small></div></div></div></div></div>
+  </section>
+  <section id="inspector-page" class="page hidden"><div class="page-intro"><span class="eyebrow">IMAGE DETAILS</span><h2>Get to know your <em>image.</em></h2><p>Inspect dimensions, format, color mode and available metadata.</p></div><label class="dropzone inspector-drop"><input id="inspect-file" type="file" accept="image/*" hidden><span class="upload-symbol">⌕</span><b>Choose an image to inspect</b><small>Click to browse · supported image formats</small></label><div id="inspect-result"></div></section>
+  <section id="history-page" class="page hidden"><div class="page-intro"><span class="eyebrow">YOUR ACTIVITY</span><h2>A record of <em>every little improvement.</em></h2><p>Your latest processing activity, saved privately to your account.</p></div><div class="panel history-panel"><div class="panel-head"><div><span class="eyebrow">RECENT OPERATIONS</span><h3>Processing history</h3></div><button id="refresh-history" class="secondary">↻ Refresh</button></div><div id="history-list" class="history-list"></div></div></section>
+  <footer class="footer">HULAGWAY · GAMAYÓN ANG IMONG MGA HULAGWAY <span>BUILT TO MAKE IMAGES WORK SMARTER.</span></footer></main>
+</div><div id="toast" class="toast"></div><script src="/static/app.js"></script>
+</body></html>
