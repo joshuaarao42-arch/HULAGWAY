@@ -64,9 +64,6 @@ The web edition lives in the `web/` directory and provides a responsive image wo
 The screenshots below show the **desktop edition**. The web edition has a simple three-box screenshot gallery where you only need to paste your image links.
 
 ### Web application
-
-The web edition has three screenshot slots below. To add your screenshots, replace only each `PASTE_IMAGE_LINK_HERE` value with the direct image URL. You do not need to edit the captions or layout.
-
 <table>
   <tr>
     <td align="center" width="33%">
@@ -79,7 +76,7 @@ The web edition has three screenshot slots below. To add your screenshots, repla
     </td>
     <td align="center" width="33%">
       <strong>Processing History</strong><br>
-      <img src="PASTE_IMAGE_LINK_HERE" alt="Hulagway Processing History" width="100%">
+      <img src="https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Images/Screenshot%202026-11-18%20130445.png?raw=trueE" alt="Hulagway Processing History" width="100%">
     </td>
   </tr>
 </table>
