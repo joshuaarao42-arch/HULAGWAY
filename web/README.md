@@ -60,6 +60,12 @@ Paste the direct image URLs into the three boxes below. Replace only `PASTE_IMAG
   </tr>
 </table>
 
+## Processing history retention
+
+Each user's processing history is retained for a maximum of 24 hours. Expired rows are removed from the history table when a user opens Processing History or a new image-processing request is submitted. The history endpoint also excludes anything older than 24 hours, and an index on `created_at` supports the cleanup query.
+
+Cleanup is request-triggered rather than a continuously running background job. If the application receives no requests, expired rows may remain in PostgreSQL until the next history or processing request.
+
 ## Desktop edition
 
 The original CustomTkinter desktop application remains in the repository root. Its installation instructions and desktop feature documentation are in the [main README](../README.md).
