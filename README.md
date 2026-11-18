@@ -65,7 +65,11 @@ The screenshots below show the **desktop edition**. Web screenshots have their o
 
 ### Desktop application
 
-| Dashboard | Image compressor |
+| Dashboard | 
+|---|---|
+| ![Hulagway desktop dashboard](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Images/Screenshot%202026-11-18%20130001.png?raw=true)
+
+| Dashboard | 
 |---|---|
 | ![Hulagway desktop dashboard](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Images/Screenshot%202026-11-18%20130001.png?raw=true) 
 ## Desktop features in detail
