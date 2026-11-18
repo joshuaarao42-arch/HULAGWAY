@@ -67,20 +67,7 @@ The screenshots below show the **desktop edition**. Web screenshots have their o
 
 | Dashboard | Image compressor |
 |---|---|
-| ![Hulagway desktop dashboard](Hulagway%28Images%29/Screenshot%202026-11-02%20111932.png) | ![Hulagway image compressor](Hulagway%28Images%29/Screenshot%202026-11-02%20111943.png) |
-
-| Format converter | Image resizer |
-|---|---|
-| ![Hulagway format converter](Hulagway%28Images%29/Screenshot%202026-11-02%20111957.png) | ![Hulagway image resizer](Hulagway%28Images%29/Screenshot%202026-11-02%20112020.png) |
-
-| Batch processor | Before and after comparison |
-|---|---|
-| ![Hulagway batch processor](Hulagway%28Images%29/Screenshot%202026-11-02%20112030.png) | ![Hulagway before and after comparison](Hulagway%28Images%29/Screenshot%202026-11-02%20112122.png) |
-
-| Image inspector | Processing history |
-|---|---|
-| ![Hulagway image inspector](Hulagway%28Images%29/Screenshot%202026-11-02%20112146.png) | ![Hulagway processing history](Hulagway%28Images%29/Screenshot%202026-11-02%20112158.png) |
-
+| ![Hulagway desktop dashboard](https://github.com/joshuaarao42-arch/HULAGWAY/blob/main/Images/Screenshot%202026-11-18%20130001.png?raw=true) 
 ## Desktop features in detail
 
 | Module | Description |
