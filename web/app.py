@@ -57,6 +57,8 @@ def ensure_schema():
             );
             CREATE INDEX IF NOT EXISTS hulagway_history_user_time
                 ON hulagway_history(user_id, created_at DESC);
+            CREATE INDEX IF NOT EXISTS hulagway_history_created_at
+                ON hulagway_history(created_at);
         """)
     SCHEMA_READY = True
 
@@ -65,6 +67,14 @@ def ensure_schema():
 def prepare_database():
     if request.endpoint not in ("static",):
         ensure_schema()
+
+
+def purge_expired_history(cur):
+    """Remove processing-history rows older than the 24-hour retention window."""
+    cur.execute("""
+        DELETE FROM hulagway_history
+        WHERE created_at < NOW() - INTERVAL '24 hours'
+    """)
 
 
 def current_user():
@@ -247,6 +257,7 @@ def process():
                          "width":original_dims[0],"height":original_dims[1],
                          "saved":max(0,len(raw)-len(payload))})
         with db() as conn, conn.cursor() as cur:
+            purge_expired_history(cur)
             for row in rows:
                 cur.execute("""INSERT INTO hulagway_history
                     (user_id,filename,operation,input_bytes,output_bytes)
@@ -270,8 +281,11 @@ def process():
 @login_required
 def history():
     with db() as conn, conn.cursor(cursor_factory=RealDictCursor) as cur:
+        purge_expired_history(cur)
         cur.execute("""SELECT filename,operation,input_bytes,output_bytes,created_at
-            FROM hulagway_history WHERE user_id=%s ORDER BY created_at DESC LIMIT 50""",
+            FROM hulagway_history
+            WHERE user_id=%s AND created_at >= NOW() - INTERVAL '24 hours'
+            ORDER BY created_at DESC LIMIT 50""",
             (current_user(),))
         rows = cur.fetchall()
     for row in rows:
