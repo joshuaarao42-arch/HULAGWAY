@@ -41,7 +41,7 @@ The web service currently accepts a maximum total upload size of 4 MB per reques
 
 ## Screenshots
 
-Use the six-image web screenshot template in [`../docs/screenshots/README.md`](../docs/screenshots/README.md). Save captures in the repository's `docs/screenshots/` directory using the filenames listed there.
+Use the three-image web screenshot template in [`../docs/screenshots/README.md`](../docs/screenshots/README.md). Save the Image Studio, Image Inspector, and Processing History captures in the repository's `docs/screenshots/` directory using the filenames listed there.
 
 ## Desktop edition
 
