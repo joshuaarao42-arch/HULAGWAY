@@ -4,7 +4,8 @@ from pathlib import Path
 
 from PIL import Image
 
-from core.image_ops import ImageError, inspect_image, load_image, make_thumbnail
+from core.image_ops import (ImageError, ProcessOptions, ValidationError, compute_size,
+                             inspect_image, load_image, make_thumbnail)
 
 
 class ImageFormatValidationTests(unittest.TestCase):
@@ -44,6 +45,23 @@ class ImageFormatValidationTests(unittest.TestCase):
         path.write_bytes(b"not an image")
         with self.assertRaises(ImageError):
             load_image(path)
+
+    def test_percent_resize_rounds_tiny_images_to_one_pixel(self):
+        options = ProcessOptions(resize_mode="percent", percent=1)
+        self.assertEqual(compute_size((1, 1), options), (1, 1))
+
+    def test_aspect_ratio_resize_never_exceeds_requested_bounds(self):
+        options = ProcessOptions(resize_mode="custom", width=400, height=300)
+        self.assertEqual(compute_size((1600, 900), options), (400, 225))
+
+    def test_rejects_non_positive_resize_dimensions(self):
+        with self.assertRaises(ValidationError):
+            ProcessOptions(resize_mode="custom", width=0, height=100).validate()
+
+    def test_rejects_resize_percent_outside_supported_range(self):
+        for percent in (0, 501):
+            with self.subTest(percent=percent), self.assertRaises(ValidationError):
+                ProcessOptions(resize_mode="percent", percent=percent).validate()
 
 
 if __name__ == "__main__":
